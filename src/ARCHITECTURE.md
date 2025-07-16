@@ -5,13 +5,10 @@
 Gena Dashboards is a Next.js application for creating and managing interactive dashboards with various chart types (bar, line, number). The application uses React, TypeScript, TailwindCSS, Recharts for data visualization, and JSON Server for the backend.
 
 ### Technology Stack
-- **Frontend**: Next.js 14, React, TypeScript
+- **Frontend**: Next.js 15, React, TypeScript
 - **Styling**: TailwindCSS
 - **Charts**: Recharts
-- **State Management**: Zustand
-- **Forms**: React Hook Form
 - **Backend**: JSON Server
-- **Drag & Drop**: React Beautiful DnD
 - **Icons**: Lucide React
 
 ## Project Structure

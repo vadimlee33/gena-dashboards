@@ -18,7 +18,7 @@ export default function ApiDocsPage() {
     script.onload = () => {
       // @ts-ignore
       const SwaggerUIBundle = window.SwaggerUIBundle
-      
+
       SwaggerUIBundle({
         url: '/api/docs',
         dom_id: '#swagger-ui',
@@ -59,14 +59,14 @@ export default function ApiDocsPage() {
             Dashboard API Documentation
           </h1>
           <p className="text-gray-600">
-            Interactive API documentation for the Dashboard application
+            Interactive API documentation for the Dashboard application (v2.0.0)
           </p>
         </div>
-        
+
         <div className="bg-white rounded-lg shadow-lg">
           <div id="swagger-ui" className="p-4" />
         </div>
-        
+
         <div className="mt-8 bg-blue-50 border border-blue-200 rounded-lg p-6">
           <h2 className="text-xl font-semibold text-blue-900 mb-4">
             Quick Start
@@ -86,7 +86,7 @@ export default function ApiDocsPage() {
               <h3 className="font-medium">Response Format</h3>
               <p>All responses follow this format:</p>
               <pre className="bg-blue-100 p-3 rounded text-sm overflow-x-auto">
-{`{
+                {`{
   "data": <response_data>,
   "success": true|false,
   "message": "Human readable message",
@@ -96,28 +96,63 @@ export default function ApiDocsPage() {
             </div>
           </div>
         </div>
-        
+
         <div className="mt-8 bg-green-50 border border-green-200 rounded-lg p-6">
           <h2 className="text-xl font-semibold text-green-900 mb-4">
-            Example Requests
+            New in v2.0.0
           </h2>
           <div className="space-y-4 text-green-800">
             <div>
+              <h3 className="font-medium">Chart Data Management</h3>
+              <p>New endpoints for managing chart data:</p>
+              <ul className="list-disc list-inside space-y-1 ml-4">
+                <li><code className="bg-green-100 px-1 py-0.5 rounded text-xs">GET /api/chart-data?endpoint=...</code> - Get chart data by endpoint</li>
+                <li><code className="bg-green-100 px-1 py-0.5 rounded text-xs">POST /api/chart-data</code> - Create new chart data</li>
+                <li><code className="bg-green-100 px-1 py-0.5 rounded text-xs">PUT /api/chart-data</code> - Update existing chart data</li>
+                <li><code className="bg-green-100 px-1 py-0.5 rounded text-xs">{'GET /api/data/{endpoint}'}</code> - Get chart data by path parameter</li>
+              </ul>
+            </div>
+            <div>
+              <h3 className="font-medium">Chart Reordering</h3>
+              <p>New endpoint for reordering charts within dashboards:</p>
+              <ul className="list-disc list-inside space-y-1 ml-4">
+                <li><code className="bg-green-100 px-1 py-0.5 rounded text-xs">{'PUT /api/dashboards/{id}/charts/reorder'}</code> - Reorder charts in a dashboard</li>
+              </ul>
+            </div>
+            <div>
+              <h3 className="font-medium">Enhanced Chart Filtering</h3>
+              <p>Improved chart listing with better filtering and sorting options.</p>
+            </div>
+          </div>
+        </div>
+
+        <div className="mt-8 bg-yellow-50 border border-yellow-200 rounded-lg p-6">
+          <h2 className="text-xl font-semibold text-yellow-900 mb-4">
+            Example Requests
+          </h2>
+          <div className="space-y-4 text-yellow-800">
+            <div>
               <h3 className="font-medium">List Dashboards</h3>
-              <code className="bg-green-100 px-2 py-1 rounded text-sm">
+              <code className="bg-yellow-100 px-2 py-1 rounded text-sm">
                 GET /api/dashboards
               </code>
             </div>
             <div>
               <h3 className="font-medium">Create Dashboard</h3>
-              <code className="bg-green-100 px-2 py-1 rounded text-sm">
+              <code className="bg-yellow-100 px-2 py-1 rounded text-sm">
                 POST /api/dashboards
               </code>
             </div>
             <div>
               <h3 className="font-medium">Get Chart Data</h3>
-              <code className="bg-green-100 px-2 py-1 rounded text-sm">
-                GET /api/data/signups_by_region
+              <code className="bg-yellow-100 px-2 py-1 rounded text-sm">
+                GET /api/chart-data?endpoint=signups_by_region
+              </code>
+            </div>
+            <div>
+              <h3 className="font-medium">Reorder Charts</h3>
+              <code className="bg-yellow-100 px-2 py-1 rounded text-sm">
+                {'PUT /api/dashboards/{id}/charts/reorder'}
               </code>
             </div>
           </div>

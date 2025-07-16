@@ -6,7 +6,7 @@ const openApiSpec = {
   info: {
     title: 'Dashboard API',
     description: 'RESTful API for managing dashboards and charts',
-    version: '1.0.0',
+    version: '2.0.0',
     contact: {
       name: 'API Support',
       email: 'support@dashboard.com',
@@ -242,23 +242,92 @@ const openApiSpec = {
         },
       },
     },
+    '/dashboards/{id}/charts/reorder': {
+      put: {
+        summary: 'Reorder dashboard charts',
+        description: 'Update the order of charts within a dashboard',
+        parameters: [
+          {
+            name: 'id',
+            in: 'path',
+            required: true,
+            description: 'Dashboard ID',
+            schema: { type: 'string' },
+          },
+        ],
+        requestBody: {
+          required: true,
+          content: {
+            'application/json': {
+              schema: {
+                type: 'object',
+                properties: {
+                  chartIds: {
+                    type: 'array',
+                    items: { type: 'string' },
+                    description: 'Array of chart IDs in the desired order',
+                  },
+                },
+                required: ['chartIds'],
+              },
+            },
+          },
+        },
+        responses: {
+          '200': {
+            description: 'Charts reordered successfully',
+            content: {
+              'application/json': {
+                schema: {
+                  type: 'object',
+                  properties: {
+                    success: { type: 'boolean' },
+                    message: { type: 'string' },
+                    data: {
+                      type: 'array',
+                      items: { $ref: '#/components/schemas/Chart' },
+                    },
+                  },
+                },
+              },
+            },
+          },
+          '400': {
+            description: 'Bad request - invalid chartIds array',
+            content: {
+              'application/json': {
+                schema: {
+                  type: 'object',
+                  properties: {
+                    success: { type: 'boolean' },
+                    error: { type: 'string' },
+                  },
+                },
+              },
+            },
+          },
+          '404': {
+            description: 'Dashboard or charts not found',
+            content: {
+              'application/json': {
+                schema: {
+                  type: 'object',
+                  properties: {
+                    success: { type: 'boolean' },
+                    error: { type: 'string' },
+                  },
+                },
+              },
+            },
+          },
+        },
+      },
+    },
     '/charts': {
       get: {
         summary: 'List charts',
         description: 'Retrieve a paginated list of charts',
         parameters: [
-          {
-            name: 'page',
-            in: 'query',
-            description: 'Page number',
-            schema: { type: 'integer', default: 1 },
-          },
-          {
-            name: 'limit',
-            in: 'query',
-            description: 'Items per page',
-            schema: { type: 'integer', default: 10 },
-          },
           {
             name: 'search',
             in: 'query',
@@ -277,6 +346,18 @@ const openApiSpec = {
             description: 'Filter by chart type',
             schema: { type: 'string', enum: ['bar', 'line', 'number'] },
           },
+          {
+            name: 'sortBy',
+            in: 'query',
+            description: 'Sort field',
+            schema: { type: 'string', default: 'order' },
+          },
+          {
+            name: 'sortOrder',
+            in: 'query',
+            description: 'Sort order',
+            schema: { type: 'string', enum: ['asc', 'desc'], default: 'asc' },
+          },
         ],
         responses: {
           '200': {
@@ -285,6 +366,16 @@ const openApiSpec = {
               'application/json': {
                 schema: {
                   $ref: '#/components/schemas/ChartListResponse',
+                },
+              },
+            },
+          },
+          '500': {
+            description: 'Internal server error',
+            content: {
+              'application/json': {
+                schema: {
+                  $ref: '#/components/schemas/ErrorResponse',
                 },
               },
             },
@@ -315,6 +406,26 @@ const openApiSpec = {
               },
             },
           },
+          '400': {
+            description: 'Bad request - validation error',
+            content: {
+              'application/json': {
+                schema: {
+                  $ref: '#/components/schemas/ErrorResponse',
+                },
+              },
+            },
+          },
+          '500': {
+            description: 'Internal server error',
+            content: {
+              'application/json': {
+                schema: {
+                  $ref: '#/components/schemas/ErrorResponse',
+                },
+              },
+            },
+          },
         },
       },
     },
@@ -338,6 +449,16 @@ const openApiSpec = {
               'application/json': {
                 schema: {
                   $ref: '#/components/schemas/ChartResponse',
+                },
+              },
+            },
+          },
+          '404': {
+            description: 'Chart not found',
+            content: {
+              'application/json': {
+                schema: {
+                  $ref: '#/components/schemas/ErrorResponse',
                 },
               },
             },
@@ -377,6 +498,16 @@ const openApiSpec = {
               },
             },
           },
+          '404': {
+            description: 'Chart not found',
+            content: {
+              'application/json': {
+                schema: {
+                  $ref: '#/components/schemas/ErrorResponse',
+                },
+              },
+            },
+          },
         },
       },
       delete: {
@@ -402,13 +533,32 @@ const openApiSpec = {
               },
             },
           },
+          '404': {
+            description: 'Chart not found',
+            content: {
+              'application/json': {
+                schema: {
+                  $ref: '#/components/schemas/ErrorResponse',
+                },
+              },
+            },
+          },
         },
       },
     },
-    '/data/signups_by_region': {
+    '/chart-data': {
       get: {
-        summary: 'Get signups by region data',
-        description: 'Retrieve data for signups by region chart',
+        summary: 'Get chart data by endpoint',
+        description: 'Retrieve chart data using an endpoint parameter',
+        parameters: [
+          {
+            name: 'endpoint',
+            in: 'query',
+            required: true,
+            description: 'Chart data endpoint',
+            schema: { type: 'string' },
+          },
+        ],
         responses: {
           '200': {
             description: 'Successful response',
@@ -420,13 +570,144 @@ const openApiSpec = {
               },
             },
           },
+          '400': {
+            description: 'Missing endpoint parameter',
+            content: {
+              'application/json': {
+                schema: {
+                  $ref: '#/components/schemas/ErrorResponse',
+                },
+              },
+            },
+          },
+          '404': {
+            description: 'Chart data not found',
+            content: {
+              'application/json': {
+                schema: {
+                  $ref: '#/components/schemas/ErrorResponse',
+                },
+              },
+            },
+          },
+          '500': {
+            description: 'Internal server error',
+            content: {
+              'application/json': {
+                schema: {
+                  $ref: '#/components/schemas/ErrorResponse',
+                },
+              },
+            },
+          },
+        },
+      },
+      post: {
+        summary: 'Create chart data',
+        description: 'Create new chart data for an endpoint',
+        requestBody: {
+          required: true,
+          content: {
+            'application/json': {
+              schema: {
+                type: 'object',
+                properties: {
+                  endpoint: { type: 'string' },
+                  data: {
+                    oneOf: [
+                      { $ref: '#/components/schemas/ChartData' },
+                      { $ref: '#/components/schemas/NumberChartData' },
+                    ],
+                  },
+                },
+                required: ['endpoint', 'data'],
+              },
+            },
+          },
+        },
+        responses: {
+          '201': {
+            description: 'Chart data created successfully',
+            content: {
+              'application/json': {
+                schema: {
+                  $ref: '#/components/schemas/ApiResponse',
+                },
+              },
+            },
+          },
+          '400': {
+            description: 'Bad request',
+            content: {
+              'application/json': {
+                schema: {
+                  $ref: '#/components/schemas/ErrorResponse',
+                },
+              },
+            },
+          },
+        },
+      },
+      put: {
+        summary: 'Update chart data',
+        description: 'Update existing chart data for an endpoint',
+        requestBody: {
+          required: true,
+          content: {
+            'application/json': {
+              schema: {
+                type: 'object',
+                properties: {
+                  endpoint: { type: 'string' },
+                  data: {
+                    oneOf: [
+                      { $ref: '#/components/schemas/ChartData' },
+                      { $ref: '#/components/schemas/NumberChartData' },
+                    ],
+                  },
+                },
+                required: ['endpoint', 'data'],
+              },
+            },
+          },
+        },
+        responses: {
+          '200': {
+            description: 'Chart data updated successfully',
+            content: {
+              'application/json': {
+                schema: {
+                  $ref: '#/components/schemas/ApiResponse',
+                },
+              },
+            },
+          },
+          '400': {
+            description: 'Bad request',
+            content: {
+              'application/json': {
+                schema: {
+                  $ref: '#/components/schemas/ErrorResponse',
+                },
+              },
+            },
+          },
         },
       },
     },
-    '/data/orders_over_time': {
+    '/data/{endpoint}': {
       get: {
-        summary: 'Get orders over time data',
-        description: 'Retrieve data for orders over time chart',
+        summary: 'Get chart data by endpoint path',
+        description: 'Retrieve chart data using endpoint as path parameter',
+        parameters: [
+          {
+            name: 'endpoint',
+            in: 'path',
+            required: true,
+            description: 'Chart data endpoint',
+            schema: { type: 'string' },
+          },
+        ],
         responses: {
           '200': {
             description: 'Successful response',
@@ -438,20 +719,32 @@ const openApiSpec = {
               },
             },
           },
-        },
-      },
-    },
-    '/data/total_revenue': {
-      get: {
-        summary: 'Get total revenue data',
-        description: 'Retrieve data for total revenue number chart',
-        responses: {
-          '200': {
-            description: 'Successful response',
+          '400': {
+            description: 'Missing endpoint parameter',
             content: {
               'application/json': {
                 schema: {
-                  $ref: '#/components/schemas/NumberChartDataResponse',
+                  $ref: '#/components/schemas/ErrorResponse',
+                },
+              },
+            },
+          },
+          '404': {
+            description: 'Chart data not found',
+            content: {
+              'application/json': {
+                schema: {
+                  $ref: '#/components/schemas/ErrorResponse',
+                },
+              },
+            },
+          },
+          '500': {
+            description: 'Internal server error',
+            content: {
+              'application/json': {
+                schema: {
+                  $ref: '#/components/schemas/ErrorResponse',
                 },
               },
             },
@@ -651,28 +944,10 @@ const openApiSpec = {
             type: 'object',
             properties: {
               data: {
-                type: 'object',
-                properties: {
-                  data: { $ref: '#/components/schemas/ChartData' },
-                  lastUpdated: { type: 'string', format: 'date-time' },
-                },
-              },
-            },
-          },
-        ],
-      },
-      NumberChartDataResponse: {
-        allOf: [
-          { $ref: '#/components/schemas/ApiResponse' },
-          {
-            type: 'object',
-            properties: {
-              data: {
-                type: 'object',
-                properties: {
-                  data: { $ref: '#/components/schemas/NumberChartData' },
-                  lastUpdated: { type: 'string', format: 'date-time' },
-                },
+                oneOf: [
+                  { $ref: '#/components/schemas/ChartData' },
+                  { $ref: '#/components/schemas/NumberChartData' },
+                ],
               },
             },
           },
