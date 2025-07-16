@@ -1,0 +1,555 @@
+{
+  "dashboards": [
+    {
+      "id": "dashboard-1",
+      "name": "Sales Dashboard 235",
+      "description": "Overview of sales performance and metrics",
+      "createdAt": "2024-01-15T10:00:00Z",
+      "updatedAt": "2025-07-15T16:17:50.405Z"
+    },
+    {
+      "id": "dashboard-2",
+      "name": "User 224",
+      "description": "User behavior and engagement metrics",
+      "createdAt": "2024-01-16T14:30:00Z",
+      "updatedAt": "2025-07-15T16:17:57.903Z"
+    },
+    {
+      "id": "c6b8",
+      "name": "dwqd",
+      "createdAt": "2025-07-12T11:54:53.319Z",
+      "updatedAt": "2025-07-12T11:54:53.319Z"
+    },
+    {
+      "id": "268c",
+      "name": "dqd",
+      "createdAt": "2025-07-12T12:00:25.777Z",
+      "updatedAt": "2025-07-12T12:00:25.777Z"
+    },
+    {
+      "id": "d68d",
+      "name": "344",
+      "description": "",
+      "createdAt": "2025-07-15T09:51:59.114Z",
+      "updatedAt": "2025-07-15T09:51:59.114Z"
+    },
+    {
+      "id": "9108",
+      "name": "3232",
+      "description": "",
+      "createdAt": "2025-07-15T10:14:19.691Z",
+      "updatedAt": "2025-07-15T10:14:19.691Z"
+    }
+  ],
+  "charts": [
+    {
+      "id": "chart-3",
+      "dashboardId": "dashboard-1",
+      "type": "bar",
+      "title": "Signups by Region",
+      "description": "User signups broken down by region",
+      "dataEndpoint": "/api/data/signups_by_region",
+      "order": 1,
+      "config": {
+        "colors": [
+          "#F59E0B"
+        ],
+        "showLegend": true,
+        "showGrid": true,
+        "animate": true
+      },
+      "createdAt": "2024-01-15T10:00:00Z",
+      "updatedAt": "2025-07-15T16:11:53.913Z"
+    },
+    {
+      "id": "chart-4",
+      "dashboardId": "dashboard-2",
+      "type": "number",
+      "title": "Active Users",
+      "description": "Current number of active users",
+      "dataEndpoint": "/api/data/active_users",
+      "order": 0,
+      "config": {
+        "colors": [
+          "#8B5CF6"
+        ],
+        "showLegend": false,
+        "animate": true
+      },
+      "createdAt": "2024-01-16T14:30:00Z",
+      "updatedAt": "2024-01-16T14:30:00Z"
+    },
+    {
+      "id": "chart-5",
+      "dashboardId": "dashboard-2",
+      "type": "line",
+      "title": "Monthly Growth",
+      "description": "Monthly user growth rate",
+      "dataEndpoint": "/api/data/monthly_growth",
+      "order": 1,
+      "config": {
+        "colors": [
+          "#10B981"
+        ],
+        "showLegend": true,
+        "showGrid": true,
+        "animate": true
+      },
+      "createdAt": "2024-01-16T14:30:00Z",
+      "updatedAt": "2024-01-16T14:30:00Z"
+    },
+    {
+      "id": "4c29",
+      "dashboardId": "dashboard-1",
+      "type": "bar",
+      "title": "55",
+      "dataEndpoint": "/api/data/signups_by_region",
+      "order": 2,
+      "config": {
+        "colors": [
+          "#3B82F6"
+        ],
+        "showLegend": true,
+        "showGrid": true,
+        "animate": true
+      },
+      "createdAt": "2025-07-15T09:58:32.340Z",
+      "updatedAt": "2025-07-15T16:11:58.824Z"
+    },
+    {
+      "id": "905b",
+      "dashboardId": "dashboard-1",
+      "type": "bar",
+      "title": "dqwq",
+      "dataEndpoint": "/api/data/signups_by_region",
+      "order": 3,
+      "config": {
+        "colors": [
+          "#3B82F6"
+        ],
+        "showLegend": true,
+        "showGrid": true,
+        "animate": true
+      },
+      "createdAt": "2025-07-15T10:03:36.630Z",
+      "updatedAt": "2025-07-15T14:59:47.236Z"
+    },
+    {
+      "id": "3c05",
+      "dashboardId": "dashboard-1",
+      "type": "bar",
+      "title": "9899",
+      "dataEndpoint": "/api/data/signups_by_region",
+      "order": 4,
+      "config": {
+        "colors": [
+          "#3B82F6"
+        ],
+        "showLegend": true,
+        "showGrid": true,
+        "animate": true
+      },
+      "createdAt": "2025-07-15T10:04:20.855Z",
+      "updatedAt": "2025-07-15T14:59:35.425Z"
+    },
+    {
+      "id": "465d",
+      "dashboardId": "dashboard-1",
+      "type": "line",
+      "title": "New Test Chart",
+      "description": "Another test chart",
+      "dataEndpoint": "/api/data/orders_over_time",
+      "order": 6,
+      "config": {
+        "colors": [
+          "#10B981"
+        ],
+        "showLegend": true,
+        "animate": true
+      },
+      "updatedAt": "2025-07-15T14:59:35.425Z"
+    },
+    {
+      "id": "516e",
+      "dashboardId": "9108",
+      "type": "bar",
+      "title": "v",
+      "dataEndpoint": "/api/data/signups_by_region",
+      "order": 0,
+      "config": {
+        "colors": [
+          "#3B82F6"
+        ],
+        "showLegend": true,
+        "showGrid": true,
+        "animate": true
+      },
+      "createdAt": "2025-07-15T10:14:24.245Z",
+      "updatedAt": "2025-07-15T10:14:24.245Z"
+    },
+    {
+      "id": "453d",
+      "dashboardId": "dashboard-1",
+      "type": "bar",
+      "title": "frf",
+      "dataEndpoint": "/api/data/signups_by_region",
+      "order": 5,
+      "config": {
+        "colors": [
+          "#3B82F6"
+        ],
+        "showLegend": true,
+        "showGrid": true,
+        "animate": true
+      },
+      "createdAt": "2025-07-15T10:14:31.203Z",
+      "updatedAt": "2025-07-15T14:59:35.425Z"
+    },
+    {
+      "id": "d177",
+      "dashboardId": "c6b8",
+      "type": "bar",
+      "title": "111",
+      "dataEndpoint": "/api/data/signups_by_region",
+      "order": 0,
+      "config": {
+        "colors": [
+          "#3B82F6"
+        ],
+        "showLegend": true,
+        "showGrid": true,
+        "animate": true
+      },
+      "createdAt": "2025-07-15T10:16:34.939Z",
+      "updatedAt": "2025-07-15T15:09:47.928Z"
+    },
+    {
+      "id": "8cfd",
+      "dashboardId": "c6b8",
+      "type": "line",
+      "title": "222",
+      "dataEndpoint": "/api/data/orders_over_time",
+      "order": 1,
+      "config": {
+        "colors": [
+          "#3B82F6"
+        ],
+        "showLegend": true,
+        "showGrid": true,
+        "animate": true
+      },
+      "createdAt": "2025-07-15T10:16:38.508Z",
+      "updatedAt": "2025-07-15T15:09:47.928Z"
+    },
+    {
+      "id": "50ea",
+      "dashboardId": "dashboard-1",
+      "type": "bar",
+      "title": "My Custom Chart",
+      "description": "A test chart with custom data",
+      "dataEndpoint": "/api/data/my_custom_chart",
+      "order": 7,
+      "config": {
+        "colors": [
+          "#3B82F6"
+        ],
+        "showLegend": true,
+        "animate": true
+      },
+      "updatedAt": "2025-07-15T14:59:35.425Z"
+    },
+    {
+      "id": "1c38",
+      "dashboardId": "dashboard-1",
+      "type": "bar",
+      "title": "My Custom Chart",
+      "description": "A test chart with custom data",
+      "dataEndpoint": "/api/data/my_custom_chart",
+      "order": 8,
+      "config": {
+        "colors": [
+          "#3B82F6"
+        ],
+        "showLegend": true,
+        "animate": true
+      },
+      "updatedAt": "2025-07-15T14:59:35.426Z"
+    },
+    {
+      "id": "15cf",
+      "dashboardId": "dashboard-2",
+      "type": "number",
+      "title": "ddwdd",
+      "dataEndpoint": "/api/data/ddwdd",
+      "order": 0,
+      "config": {
+        "colors": [
+          "#127856"
+        ],
+        "showLegend": true,
+        "showGrid": true,
+        "animate": true
+      },
+      "createdAt": "2025-07-15T12:16:08.532Z",
+      "updatedAt": "2025-07-15T14:59:31.888Z"
+    },
+    {
+      "id": "4dc0",
+      "dashboardId": "268c",
+      "type": "bar",
+      "title": "asd",
+      "dataEndpoint": "/api/data/asd",
+      "order": 0,
+      "config": {
+        "colors": [
+          "#3B82F6"
+        ],
+        "showLegend": true,
+        "showGrid": true,
+        "animate": true
+      },
+      "createdAt": "2025-07-15T15:08:31.208Z",
+      "updatedAt": "2025-07-15T15:08:31.208Z"
+    }
+  ],
+  "chartData": [
+    {
+      "id": "1",
+      "endpoint": "total_revenue",
+      "data": {
+        "value": 125000,
+        "label": "Total Revenue",
+        "unit": "$"
+      },
+      "createdAt": "2024-01-15T10:00:00Z",
+      "updatedAt": "2024-01-15T10:00:00Z"
+    },
+    {
+      "id": "2",
+      "endpoint": "orders_over_time",
+      "data": {
+        "labels": [
+          "Jan",
+          "Feb",
+          "Mar",
+          "Apr",
+          "May",
+          "Jun"
+        ],
+        "values": [
+          120,
+          150,
+          180,
+          220,
+          280,
+          320
+        ]
+      },
+      "createdAt": "2024-01-15T10:00:00Z",
+      "updatedAt": "2024-01-15T10:00:00Z"
+    },
+    {
+      "id": "3",
+      "endpoint": "signups_by_region",
+      "data": {
+        "labels": [
+          "North America",
+          "Europe",
+          "Asia",
+          "South America"
+        ],
+        "values": [
+          55,
+          4440,
+          280,
+          110
+        ]
+      },
+      "createdAt": "2024-01-15T10:00:00Z",
+      "updatedAt": "2025-07-15T16:11:58.821Z"
+    },
+    {
+      "id": "4",
+      "endpoint": "active_users",
+      "data": {
+        "value": 15420,
+        "label": "Active Users",
+        "unit": "users"
+      },
+      "createdAt": "2024-01-16T14:30:00Z",
+      "updatedAt": "2024-01-16T14:30:00Z"
+    },
+    {
+      "id": "5",
+      "endpoint": "monthly_growth",
+      "data": {
+        "labels": [
+          "Jan",
+          "Feb",
+          "Mar",
+          "Apr",
+          "May",
+          "Jun"
+        ],
+        "values": [
+          5.2,
+          7.8,
+          12.3,
+          15.6,
+          18.9,
+          22.1
+        ]
+      },
+      "createdAt": "2024-01-16T14:30:00Z",
+      "updatedAt": "2024-01-16T14:30:00Z"
+    },
+    {
+      "id": "0eda",
+      "endpoint": "test_number_chart",
+      "data": {
+        "value": 12345,
+        "label": "Test Number",
+        "unit": "USD"
+      }
+    },
+    {
+      "id": "8832",
+      "endpoint": "test_bar_chart",
+      "data": {
+        "labels": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "values": [
+          10,
+          20,
+          15,
+          25
+        ]
+      }
+    },
+    {
+      "id": "b5a2",
+      "endpoint": "test_line_chart",
+      "data": {
+        "labels": [
+          "Jan",
+          "Feb",
+          "Mar",
+          "Apr",
+          "May"
+        ],
+        "values": [
+          5,
+          10,
+          8,
+          15,
+          12
+        ]
+      }
+    },
+    {
+      "id": "0b91",
+      "endpoint": "bbbb",
+      "data": {
+        "labels": [
+          "a3",
+          "a4",
+          "a5"
+        ],
+        "values": [
+          10,
+          20,
+          30
+        ]
+      },
+      "createdAt": "2025-07-15T10:32:39.426Z",
+      "updatedAt": "2025-07-15T10:32:39.426Z"
+    },
+    {
+      "id": "ce40",
+      "endpoint": "my_custom_chart",
+      "data": {
+        "labels": [
+          "Q1",
+          "Q2",
+          "Q3",
+          "Q4"
+        ],
+        "values": [
+          100,
+          150,
+          200,
+          175
+        ]
+      }
+    },
+    {
+      "id": "083e",
+      "endpoint": "my_custom_chart",
+      "data": {
+        "labels": [
+          "Q1",
+          "Q2",
+          "Q3",
+          "Q4"
+        ],
+        "values": [
+          100,
+          150,
+          200,
+          175
+        ]
+      }
+    },
+    {
+      "id": "291f",
+      "endpoint": "test",
+      "data": {
+        "labels": [
+          "mar",
+          "jr",
+          "rr"
+        ],
+        "values": [
+          11,
+          22,
+          33
+        ]
+      },
+      "createdAt": "2025-07-15T10:38:06.996Z",
+      "updatedAt": "2025-07-15T10:38:06.996Z"
+    },
+    {
+      "id": "b515",
+      "endpoint": "ddwdd",
+      "data": {
+        "value": 1221,
+        "label": "ddwdd",
+        "unit": ""
+      },
+      "createdAt": "2025-07-15T12:16:08.514Z",
+      "updatedAt": "2025-07-15T12:16:08.514Z"
+    },
+    {
+      "id": "cea0",
+      "endpoint": "asd",
+      "data": {
+        "labels": [
+          "as",
+          "es",
+          "e"
+        ],
+        "values": [
+          11,
+          22,
+          33
+        ]
+      },
+      "createdAt": "2025-07-15T15:08:31.184Z",
+      "updatedAt": "2025-07-15T15:08:31.184Z"
+    }
+  ]
+}
