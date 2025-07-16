@@ -5,13 +5,7 @@ import Input from '@/components/ui/input';
 import Badge from '@/components/ui/badge';
 import DashboardCard from './dashboard-card';
 import { dashboardStyles, combineClasses } from '@/lib/styles/component-styles';
-
-interface Dashboard {
-  id: string;
-  name: string;
-  createdAt?: Date;
-  chartCount?: number;
-}
+import { Dashboard } from '@/features/dashboard/types';
 
 interface DashboardListProps {
   dashboards: Dashboard[];
@@ -23,11 +17,11 @@ interface DashboardListProps {
   isLoading?: boolean;
 }
 
-const DashboardList: React.FC<DashboardListProps> = ({ 
-  dashboards, 
-  onCreate, 
-  onRename, 
-  onDelete, 
+const DashboardList: React.FC<DashboardListProps> = ({
+  dashboards,
+  onCreate,
+  onRename,
+  onDelete,
   onSelect,
   isCreating = false,
   isLoading = false,
@@ -54,7 +48,7 @@ const DashboardList: React.FC<DashboardListProps> = ({
             Create a new dashboard to start visualizing your data and track your metrics
           </p>
         </div>
-        
+
         <form
           onSubmit={handleSubmit}
           className={dashboardStyles.createForm}
@@ -70,9 +64,9 @@ const DashboardList: React.FC<DashboardListProps> = ({
               disabled={isCreating}
             />
           </div>
-          <Button 
-            type="submit" 
-            variant="primary" 
+          <Button
+            type="submit"
+            variant="primary"
             size="lg"
             className={dashboardStyles.createButton}
             disabled={isCreating || !newName.trim()}
@@ -99,7 +93,7 @@ const DashboardList: React.FC<DashboardListProps> = ({
             </Badge>
           </div>
         </div>
-        
+
         {isLoading ? (
           <Card padding="xl" className={dashboardStyles.emptyCard}>
             <div className={dashboardStyles.empty}>
@@ -122,8 +116,8 @@ const DashboardList: React.FC<DashboardListProps> = ({
               <p className={dashboardStyles.emptyDescription}>
                 Get started by creating your first dashboard to visualize your data and track important metrics.
               </p>
-              <Button 
-                variant="primary" 
+              <Button
+                variant="primary"
                 size="lg"
                 onClick={() => document.querySelector('input')?.focus()}
               >
@@ -137,6 +131,7 @@ const DashboardList: React.FC<DashboardListProps> = ({
               <DashboardCard
                 key={dashboard.id}
                 dashboard={dashboard}
+                chartCount={dashboard.charts.length}
                 onSelect={onSelect}
                 onRename={onRename}
                 onDelete={onDelete}

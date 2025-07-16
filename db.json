@@ -105,7 +105,7 @@
       "type": "bar",
       "title": "55",
       "dataEndpoint": "/api/data/signups_by_region",
-      "order": 2,
+      "order": 0,
       "config": {
         "colors": [
           "#3B82F6"
@@ -115,13 +115,31 @@
         "animate": true
       },
       "createdAt": "2025-07-15T09:58:32.340Z",
-      "updatedAt": "2025-07-15T16:11:58.824Z"
+      "updatedAt": "2025-07-16T05:38:22.206Z"
     },
     {
       "id": "905b",
       "dashboardId": "dashboard-1",
       "type": "bar",
       "title": "dqwq",
+      "dataEndpoint": "/api/data/signups_by_region",
+      "order": 2,
+      "config": {
+        "colors": [
+          "#3B82F6"
+        ],
+        "showLegend": true,
+        "showGrid": true,
+        "animate": true
+      },
+      "createdAt": "2025-07-15T10:03:36.630Z",
+      "updatedAt": "2025-07-16T05:38:09.703Z"
+    },
+    {
+      "id": "3c05",
+      "dashboardId": "dashboard-1",
+      "type": "bar",
+      "title": "9899",
       "dataEndpoint": "/api/data/signups_by_region",
       "order": 3,
       "config": {
@@ -132,26 +150,8 @@
         "showGrid": true,
         "animate": true
       },
-      "createdAt": "2025-07-15T10:03:36.630Z",
-      "updatedAt": "2025-07-15T14:59:47.236Z"
-    },
-    {
-      "id": "3c05",
-      "dashboardId": "dashboard-1",
-      "type": "bar",
-      "title": "9899",
-      "dataEndpoint": "/api/data/signups_by_region",
-      "order": 4,
-      "config": {
-        "colors": [
-          "#3B82F6"
-        ],
-        "showLegend": true,
-        "showGrid": true,
-        "animate": true
-      },
       "createdAt": "2025-07-15T10:04:20.855Z",
-      "updatedAt": "2025-07-15T14:59:35.425Z"
+      "updatedAt": "2025-07-16T05:38:09.703Z"
     },
     {
       "id": "465d",
@@ -160,7 +160,7 @@
       "title": "New Test Chart",
       "description": "Another test chart",
       "dataEndpoint": "/api/data/orders_over_time",
-      "order": 6,
+      "order": 5,
       "config": {
         "colors": [
           "#10B981"
@@ -168,7 +168,7 @@
         "showLegend": true,
         "animate": true
       },
-      "updatedAt": "2025-07-15T14:59:35.425Z"
+      "updatedAt": "2025-07-16T05:38:09.703Z"
     },
     {
       "id": "516e",
@@ -194,7 +194,7 @@
       "type": "bar",
       "title": "frf",
       "dataEndpoint": "/api/data/signups_by_region",
-      "order": 5,
+      "order": 4,
       "config": {
         "colors": [
           "#3B82F6"
@@ -204,7 +204,7 @@
         "animate": true
       },
       "createdAt": "2025-07-15T10:14:31.203Z",
-      "updatedAt": "2025-07-15T14:59:35.425Z"
+      "updatedAt": "2025-07-16T05:38:09.703Z"
     },
     {
       "id": "d177",
@@ -249,7 +249,7 @@
       "title": "My Custom Chart",
       "description": "A test chart with custom data",
       "dataEndpoint": "/api/data/my_custom_chart",
-      "order": 7,
+      "order": 6,
       "config": {
         "colors": [
           "#3B82F6"
@@ -257,7 +257,7 @@
         "showLegend": true,
         "animate": true
       },
-      "updatedAt": "2025-07-15T14:59:35.425Z"
+      "updatedAt": "2025-07-16T05:38:09.703Z"
     },
     {
       "id": "1c38",
@@ -266,7 +266,7 @@
       "title": "My Custom Chart",
       "description": "A test chart with custom data",
       "dataEndpoint": "/api/data/my_custom_chart",
-      "order": 8,
+      "order": 7,
       "config": {
         "colors": [
           "#3B82F6"
@@ -274,7 +274,7 @@
         "showLegend": true,
         "animate": true
       },
-      "updatedAt": "2025-07-15T14:59:35.426Z"
+      "updatedAt": "2025-07-16T05:38:09.703Z"
     },
     {
       "id": "15cf",
@@ -311,6 +311,24 @@
       },
       "createdAt": "2025-07-15T15:08:31.208Z",
       "updatedAt": "2025-07-15T15:08:31.208Z"
+    },
+    {
+      "id": "chart_sSxF6JUR",
+      "dashboardId": "dashboard-1",
+      "type": "number",
+      "title": "efwfw",
+      "dataEndpoint": "/api/data/efwfw",
+      "order": 8,
+      "config": {
+        "colors": [
+          "#3B82F6"
+        ],
+        "showLegend": true,
+        "showGrid": true,
+        "animate": true
+      },
+      "createdAt": "2025-07-16T05:38:33.687Z",
+      "updatedAt": "2025-07-16T05:38:33.687Z"
     }
   ],
   "chartData": [
@@ -362,12 +380,12 @@
         "values": [
           55,
           4440,
-          280,
+          210,
           110
         ]
       },
       "createdAt": "2024-01-15T10:00:00Z",
-      "updatedAt": "2025-07-15T16:11:58.821Z"
+      "updatedAt": "2025-07-16T05:38:22.202Z"
     },
     {
       "id": "4",
@@ -551,6 +569,28 @@
       },
       "createdAt": "2025-07-15T15:08:31.184Z",
       "updatedAt": "2025-07-15T15:08:31.184Z"
+    },
+    {
+      "id": "614f",
+      "endpoint": "efwfw",
+      "data": {
+        "value": 111,
+        "label": "efwfw",
+        "unit": ""
+      },
+      "createdAt": "2025-07-16T05:38:33.483Z",
+      "updatedAt": "2025-07-16T05:38:33.483Z"
+    },
+    {
+      "id": "cc7f",
+      "endpoint": "efwfw",
+      "data": {
+        "value": 111,
+        "label": "efwfw",
+        "unit": ""
+      },
+      "createdAt": "2025-07-16T05:38:33.496Z",
+      "updatedAt": "2025-07-16T05:38:33.496Z"
     }
   ]
 }

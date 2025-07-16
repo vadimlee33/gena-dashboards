@@ -4,16 +4,11 @@ import Button from '@/components/ui/button';
 import Input from '@/components/ui/input';
 import Badge from '@/components/ui/badge';
 import { cardStyles, combineClasses } from '@/lib/styles/component-styles';
-
-interface Dashboard {
-  id: string;
-  name: string;
-  createdAt?: Date;
-  chartCount?: number;
-}
+import { Dashboard } from '@/features/dashboard/types';
 
 interface DashboardCardProps {
   dashboard: Dashboard;
+  chartCount: number;
   onSelect: (id: string) => void;
   onRename: (id: string, name: string) => void;
   onDelete: (id: string) => void;
@@ -21,6 +16,7 @@ interface DashboardCardProps {
 
 const DashboardCard: React.FC<DashboardCardProps> = ({
   dashboard,
+  chartCount,
   onSelect,
   onRename,
   onDelete,
@@ -64,17 +60,17 @@ const DashboardCard: React.FC<DashboardCardProps> = ({
             autoFocus
           />
           <div className="flex gap-3">
-            <Button 
-              type="submit" 
-              variant="primary" 
-              size="sm" 
+            <Button
+              type="submit"
+              variant="primary"
+              size="sm"
               className="flex-1"
             >
               Save Changes
             </Button>
-            <Button 
-              type="button" 
-              variant="secondary" 
+            <Button
+              type="button"
+              variant="secondary"
               size="sm"
               onClick={handleCancel}
               className="flex-1"
@@ -101,26 +97,29 @@ const DashboardCard: React.FC<DashboardCardProps> = ({
                       Created {new Date(dashboard.createdAt).toLocaleDateString()}
                     </span>
                   )}
+                  <span className="text-sm text-gray-500">
+                    Charts: {chartCount}
+                  </span>
                 </div>
               </div>
             </div>
           </div>
-          
+
           {/* Footer Section */}
           <div className="flex items-center justify-between pt-4 border-t border-gray-100">
             <div className="text-sm font-medium text-gray-500">
               Click to view dashboard
             </div>
             <div className="flex items-center space-x-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-              <Button 
-                variant="withIcon" 
+              <Button
+                variant="withIcon"
                 size="sm"
                 onClick={handleEdit}
               >
                 ✏️ Edit
               </Button>
-              <Button 
-                variant="withIcon" 
+              <Button
+                variant="withIcon"
                 size="sm"
                 onClick={handleDelete}
               >
