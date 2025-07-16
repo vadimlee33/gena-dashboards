@@ -172,4 +172,6 @@ storybook-static
 next-env.d.ts
 
 # Local development
-.local 
+.local
+
+TASK.txt
