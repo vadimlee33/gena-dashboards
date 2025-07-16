@@ -7,7 +7,6 @@ async function testDashboardRename() {
   console.log('🧪 Testing Dashboard Rename Functionality...\n');
 
   try {
-    // Step 1: Create a test dashboard
     console.log('1. Creating test dashboard...');
     const dashboardResponse = await fetch(`${API_BASE}/dashboards`, {
       method: 'POST',
@@ -28,7 +27,6 @@ async function testDashboardRename() {
     console.log(`✅ Dashboard created with ID: ${dashboard.id}`);
     console.log(`✅ Original name: ${dashboard.name}`);
 
-    // Step 2: Test dashboard rename via API
     console.log('\n2. Testing dashboard rename...');
     const newName = 'Updated Dashboard Name';
     const renameResponse = await fetch(`${API_BASE}/dashboards/${dashboard.id}`, {
@@ -47,7 +45,6 @@ async function testDashboardRename() {
     const renamedDashboard = await renameResponse.json();
     console.log(`✅ Dashboard renamed successfully: ${renamedDashboard.name}`);
 
-    // Step 3: Verify the rename was saved
     console.log('\n3. Verifying rename was saved...');
     const verifyResponse = await fetch(`${API_BASE}/dashboards/${dashboard.id}`);
     
@@ -64,7 +61,6 @@ async function testDashboardRename() {
       throw new Error('Dashboard name was not updated in database');
     }
 
-    // Step 4: Test multiple renames
     console.log('\n4. Testing multiple renames...');
     const secondNewName = 'Final Dashboard Name';
     const secondRenameResponse = await fetch(`${API_BASE}/dashboards/${dashboard.id}`, {
@@ -83,7 +79,6 @@ async function testDashboardRename() {
     const finalDashboard = await secondRenameResponse.json();
     console.log(`✅ Second rename successful: ${finalDashboard.name}`);
 
-    // Step 5: Test rename with special characters
     console.log('\n5. Testing rename with special characters...');
     const specialName = 'Dashboard with Special Chars: @#$%^&*()';
     const specialRenameResponse = await fetch(`${API_BASE}/dashboards/${dashboard.id}`, {
@@ -102,7 +97,6 @@ async function testDashboardRename() {
     const specialDashboard = await specialRenameResponse.json();
     console.log(`✅ Special characters rename successful: ${specialDashboard.name}`);
 
-    // Step 6: Test rename with empty name (should fail)
     console.log('\n6. Testing rename with empty name (should fail)...');
     const emptyRenameResponse = await fetch(`${API_BASE}/dashboards/${dashboard.id}`, {
       method: 'PATCH',
@@ -119,7 +113,6 @@ async function testDashboardRename() {
       console.log('✅ Empty name was rejected as expected');
     }
 
-    // Step 7: Clean up - Delete test dashboard
     console.log('\n7. Cleaning up test dashboard...');
     await fetch(`${API_BASE}/dashboards/${dashboard.id}`, { method: 'DELETE' });
     console.log('✅ Test dashboard cleaned up');
@@ -140,5 +133,5 @@ async function testDashboardRename() {
   }
 }
 
-// Run the test
+
 testDashboardRename(); 

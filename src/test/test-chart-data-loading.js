@@ -4,7 +4,6 @@ async function testChartDataLoading() {
   console.log('Testing chart data loading...\n');
 
   try {
-    // Test 1: Get existing chart data
     console.log('1. Testing existing chart data...');
     const existingEndpoints = ['total_revenue', 'orders_over_time', 'signups_by_region'];
     
@@ -31,7 +30,6 @@ async function testChartDataLoading() {
       }
     }
 
-    // Test 2: Test our new endpoints
     console.log('\n2. Testing new chart data endpoints...');
     const newEndpoints = ['test_number_chart', 'test_bar_chart', 'test_line_chart'];
     
@@ -58,7 +56,6 @@ async function testChartDataLoading() {
       }
     }
 
-    // Test 3: Test Next.js API endpoints
     console.log('\n3. Testing Next.js API endpoints...');
     const nextApiEndpoints = ['/api/data/total_revenue', '/api/data/orders_over_time', '/api/data/signups_by_region'];
     

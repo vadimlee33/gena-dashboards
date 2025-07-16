@@ -1,11 +1,9 @@
-// Simple API test script
 const API_BASE = 'http://localhost:3001';
 
 async function testAPI() {
   console.log('Testing API endpoints...\n');
 
   try {
-    // Test 1: Get dashboards
     console.log('1. Testing GET /dashboards');
     const dashboardsResponse = await fetch(`${API_BASE}/dashboards`);
     const dashboards = await dashboardsResponse.json();
@@ -13,7 +11,6 @@ async function testAPI() {
     console.log('Dashboard IDs:', dashboards.map(d => d.id));
     console.log('');
 
-    // Test 2: Get charts for first dashboard
     if (dashboards.length > 0) {
       const firstDashboard = dashboards[0];
       console.log(`2. Testing GET /charts?dashboardId=${firstDashboard.id}`);
@@ -23,7 +20,6 @@ async function testAPI() {
       console.log('Chart titles:', charts.map(c => c.title));
       console.log('');
 
-      // Test 3: Create a new chart
       console.log('3. Testing POST /charts');
       const newChart = {
         dashboardId: firstDashboard.id,
@@ -53,7 +49,6 @@ async function testAPI() {
         console.log('Chart title:', createdChart.title);
         console.log('');
 
-        // Test 4: Update chart order
         console.log('4. Testing PATCH /charts/:id');
         const updateResponse = await fetch(`${API_BASE}/charts/${createdChart.id}`, {
           method: 'PATCH',
@@ -69,7 +64,6 @@ async function testAPI() {
           console.log('New order:', updatedChart.order);
           console.log('');
 
-          // Test 5: Delete the test chart
           console.log('5. Testing DELETE /charts/:id');
           const deleteResponse = await fetch(`${API_BASE}/charts/${createdChart.id}`, {
             method: 'DELETE',

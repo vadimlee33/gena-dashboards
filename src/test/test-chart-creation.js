@@ -4,7 +4,6 @@ async function testChartCreation() {
   console.log('Testing chart creation and loading...\n');
 
   try {
-    // Test 1: Get dashboards
     console.log('1. Getting dashboards...');
     const dashboardsResponse = await fetch(`${API_BASE}/dashboards`);
     const dashboards = await dashboardsResponse.json();
@@ -26,7 +25,6 @@ async function testChartCreation() {
       const newDashboard = await dashboardResponse.json();
       console.log('✅ Created dashboard:', newDashboard.id);
       
-      // Test 2: Create a chart
       console.log('\n2. Creating a test chart...');
       const chartResponse = await fetch(`${API_BASE}/charts`, {
         method: 'POST',
@@ -51,7 +49,6 @@ async function testChartCreation() {
       console.log('Chart title:', newChart.title);
       console.log('Dashboard ID:', newChart.dashboardId);
       
-      // Test 3: Get charts for the dashboard
       console.log('\n3. Getting charts for dashboard...');
       const chartsResponse = await fetch(`${API_BASE}/charts?dashboardId=${newDashboard.id}`);
       const charts = await chartsResponse.json();
@@ -62,7 +59,6 @@ async function testChartCreation() {
         console.log('Chart IDs:', charts.map(c => c.id));
       }
       
-      // Test 4: Get dashboard with charts
       console.log('\n4. Getting dashboard with charts...');
       const dashboardWithChartsResponse = await fetch(`${API_BASE}/dashboards/${newDashboard.id}`);
       const dashboardWithCharts = await dashboardWithChartsResponse.json();
@@ -79,7 +75,6 @@ async function testChartCreation() {
       const firstDashboard = dashboards[0];
       console.log('Using existing dashboard:', firstDashboard.name);
       
-      // Test 2: Create a chart
       console.log('\n2. Creating a test chart...');
       const chartResponse = await fetch(`${API_BASE}/charts`, {
         method: 'POST',
@@ -103,7 +98,6 @@ async function testChartCreation() {
       console.log('✅ Created chart:', newChart.id);
       console.log('Chart title:', newChart.title);
       
-      // Test 3: Get charts for the dashboard
       console.log('\n3. Getting charts for dashboard...');
       const chartsResponse = await fetch(`${API_BASE}/charts?dashboardId=${firstDashboard.id}`);
       const charts = await chartsResponse.json();

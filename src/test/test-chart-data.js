@@ -4,7 +4,6 @@ async function testChartDataCreation() {
   console.log('Testing chart data creation...\n');
 
   try {
-    // Test 1: Create chart data for number chart
     console.log('1. Creating number chart data...');
     const numberChartData = {
       endpoint: 'test_number_chart',
@@ -28,7 +27,6 @@ async function testChartDataCreation() {
       console.log('❌ Failed to create number chart data');
     }
 
-    // Test 2: Create chart data for bar chart
     console.log('\n2. Creating bar chart data...');
     const barChartData = {
       endpoint: 'test_bar_chart',
@@ -51,7 +49,6 @@ async function testChartDataCreation() {
       console.log('❌ Failed to create bar chart data');
     }
 
-    // Test 3: Create chart data for line chart
     console.log('\n3. Creating line chart data...');
     const lineChartData = {
       endpoint: 'test_line_chart',
@@ -74,7 +71,6 @@ async function testChartDataCreation() {
       console.log('❌ Failed to create line chart data');
     }
 
-    // Test 4: Get all chart data
     console.log('\n4. Getting all chart data...');
     const getAllResponse = await fetch(`${API_BASE}/chartData`);
     if (getAllResponse.ok) {

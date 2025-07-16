@@ -4,8 +4,7 @@ async function testNewChartCreation() {
   console.log('Testing new chart creation with custom data...\n');
 
   try {
-    // Test 1: Create chart data first
-    console.log('1. Creating chart data...');
+      console.log('1. Creating chart data...');
     const chartData = {
       endpoint: 'my_custom_chart',
       data: {
@@ -28,7 +27,6 @@ async function testNewChartCreation() {
       return;
     }
 
-    // Test 2: Create chart
     console.log('\n2. Creating chart...');
     const chart = {
       dashboardId: 'dashboard-1',
@@ -60,7 +58,6 @@ async function testNewChartCreation() {
       return;
     }
 
-    // Test 3: Verify chart data is accessible
     console.log('\n3. Verifying chart data accessibility...');
     const verifyResponse = await fetch(`${API_BASE}/chartData?endpoint=my_custom_chart`);
     if (verifyResponse.ok) {

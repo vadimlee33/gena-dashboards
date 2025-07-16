@@ -1,108 +1,108 @@
-# Архитектура приложения Gena Dashboards
+# Gena Dashboards Application Architecture
 
-## Обзор приложения
+## Application Overview
 
-Gena Dashboards - это Next.js приложение для создания и управления интерактивными дашбордами с различными типами графиков (столбчатые, линейные, числовые). Приложение использует React, TypeScript, TailwindCSS, Recharts для визуализации данных и JSON Server для бэкенда.
+Gena Dashboards is a Next.js application for creating and managing interactive dashboards with various chart types (bar, line, number). The application uses React, TypeScript, TailwindCSS, Recharts for data visualization, and JSON Server for the backend.
 
-### Технологический стек
+### Technology Stack
 - **Frontend**: Next.js 14, React, TypeScript
-- **Стилизация**: TailwindCSS
-- **Графики**: Recharts
-- **Управление состоянием**: Zustand
-- **Формы**: React Hook Form
+- **Styling**: TailwindCSS
+- **Charts**: Recharts
+- **State Management**: Zustand
+- **Forms**: React Hook Form
 - **Backend**: JSON Server
 - **Drag & Drop**: React Beautiful DnD
-- **Иконки**: Lucide React
+- **Icons**: Lucide React
 
-## Структура проекта
+## Project Structure
 
 ```
 src/
-├── app/                    # Next.js App Router (страницы и API)
+├── app/                    # Next.js App Router (pages and API)
 │   ├── api/               # Backend API endpoints
-│   │   ├── chart-data/    # API для данных графиков
-│   │   ├── charts/        # API для управления графиками
-│   │   ├── dashboards/    # API для управления дашбордами
-│   │   ├── data/          # API для получения данных
-│   │   └── docs/          # API документация
-│   ├── dashboard/         # Страницы дашбордов
-│   ├── api-docs/          # Страница документации API
-│   ├── layout.tsx         # Корневой layout
-│   └── page.tsx           # Главная страница
-├── components/            # React компоненты
-│   ├── ui/               # Базовые UI компоненты
-│   │   ├── avatar.tsx    # Компонент аватара
-│   │   ├── badge.tsx     # Компонент бейджа
-│   │   ├── button.tsx    # Компонент кнопки
-│   │   ├── card.tsx      # Компонент карточки
-│   │   ├── header.tsx    # Компонент заголовка
-│   │   ├── input.tsx     # Компонент ввода
-│   │   ├── modal.tsx     # Компонент модального окна
-│   │   └── test-tailwind.tsx # Тестовый компонент
-│   ├── charts/           # Компоненты графиков
-│   │   ├── bar-chart.tsx     # Столбчатый график
-│   │   ├── line-chart.tsx    # Линейный график
-│   │   ├── number-chart.tsx  # Числовой график
-│   │   ├── chart-config-modal.tsx # Модальное окно настройки
-│   │   └── chart-wrapper.tsx # Обертка для графиков
-│   ├── dashboard/        # Компоненты дашбордов
-│   │   ├── dashboard-card.tsx    # Карточка дашборда
-│   │   ├── dashboard-list.tsx    # Список дашбордов
-│   │   └── dashboard-view.tsx    # Просмотр дашборда
-│   └── layout/           # Компоненты макета
-│       └── main-layout.tsx       # Основной макет
-├── features/             # Feature-based архитектура
+│   │   ├── chart-data/    # API for chart data
+│   │   ├── charts/        # API for chart management
+│   │   ├── dashboards/    # API for dashboard management
+│   │   ├── data/          # API for data retrieval
+│   │   └── docs/          # API documentation
+│   ├── dashboard/         # Dashboard pages
+│   ├── api-docs/          # API documentation page
+│   ├── layout.tsx         # Root layout
+│   └── page.tsx           # Main page
+├── components/            # React components
+│   ├── ui/               # Base UI components
+│   │   ├── avatar.tsx    # Avatar component
+│   │   ├── badge.tsx     # Badge component
+│   │   ├── button.tsx    # Button component
+│   │   ├── card.tsx      # Card component
+│   │   ├── header.tsx    # Header component
+│   │   ├── input.tsx     # Input component
+│   │   ├── modal.tsx     # Modal component
+│   │   └── test-tailwind.tsx # Test component
+│   ├── charts/           # Chart components
+│   │   ├── bar-chart.tsx     # Bar chart
+│   │   ├── line-chart.tsx    # Line chart
+│   │   ├── number-chart.tsx  # Number chart
+│   │   ├── chart-config-modal.tsx # Chart configuration modal
+│   │   └── chart-wrapper.tsx # Chart wrapper
+│   ├── dashboard/        # Dashboard components
+│   │   ├── dashboard-card.tsx    # Dashboard card
+│   │   ├── dashboard-list.tsx    # Dashboard list
+│   │   └── dashboard-view.tsx    # Dashboard view
+│   └── layout/           # Layout components
+│       └── main-layout.tsx       # Main layout
+├── features/             # Feature-based architecture
 │   ├── dashboard/        # Dashboard feature
-│   │   ├── types.ts      # Типы данных дашбордов
-│   │   └── hooks/        # Custom hooks для логики
-│   │       └── use-dashboards.ts # Хук для управления дашбордами
+│   │   ├── types.ts      # Dashboard data types
+│   │   └── hooks/        # Custom hooks for logic
+│   │       └── use-dashboards.ts # Hook for dashboard management
 │   └── charts/           # Charts feature
-│       └── hooks/        # Custom hooks для charts
-│           └── use-chart-modal.ts # Хук для модального окна графиков
-├── services/             # Backend сервисы
-│   └── api/              # API клиенты
-│       └── dashboard-service.ts  # Сервис для работы с дашбордами
-└── lib/                  # Утилиты и конфигурации
-    ├── data/             # Данные
-    │   └── mock-data.ts  # Моковые данные
-    ├── styles/           # Стили
-    │   ├── component-styles.ts   # Стили компонентов
-    │   ├── design-system.ts      # Дизайн-система
-    │   └── index.ts              # Экспорт стилей
-    ├── types/            # TypeScript типы
-    │   └── api.ts        # Типы API
-    └── utils/            # Утилиты
-        ├── api.ts        # Утилиты для API
-        ├── id-generator.ts       # Генератор ID
-        └── json-server.ts        # Утилиты для JSON Server
+│       └── hooks/        # Custom hooks for charts
+│           └── use-chart-modal.ts # Hook for chart modal
+├── services/             # Backend services
+│   └── api/              # API clients
+│       └── dashboard-service.ts  # Service for dashboard API
+└── lib/                  # Utilities and configurations
+    ├── data/             # Data
+    │   └── mock-data.ts  # Mock data
+    ├── styles/           # Styles
+    │   ├── component-styles.ts   # Component styles
+    │   ├── design-system.ts      # Design system
+    │   └── index.ts              # Style exports
+    ├── types/            # TypeScript types
+    │   └── api.ts        # API types
+    └── utils/            # Utilities
+        ├── api.ts        # API utilities
+        ├── id-generator.ts       # ID generator
+        └── json-server.ts        # JSON Server utilities
 ```
 
 ## API Endpoints
 
 ### Dashboards API
-- `GET /api/dashboards` - Получить список дашбордов
-- `GET /api/dashboards/:id` - Получить конкретный дашборд
-- `POST /api/dashboards` - Создать дашборд
-- `PUT /api/dashboards/:id` - Обновить дашборд
-- `DELETE /api/dashboards/:id` - Удалить дашборд
+- `GET /api/dashboards` - Get list of dashboards
+- `GET /api/dashboards/:id` - Get specific dashboard
+- `POST /api/dashboards` - Create dashboard
+- `PUT /api/dashboards/:id` - Update dashboard
+- `DELETE /api/dashboards/:id` - Delete dashboard
 
 ### Charts API
-- `GET /api/charts` - Получить список графиков
-- `GET /api/charts/:id` - Получить конкретный график
-- `POST /api/charts` - Создать график
-- `PUT /api/charts/:id` - Обновить график
-- `DELETE /api/charts/:id` - Удалить график
-- `PATCH /api/dashboards/:id/charts/reorder` - Изменить порядок графиков
+- `GET /api/charts` - Get list of charts
+- `GET /api/charts/:id` - Get specific chart
+- `POST /api/charts` - Create chart
+- `PUT /api/charts/:id` - Update chart
+- `DELETE /api/charts/:id` - Delete chart
+- `PATCH /api/dashboards/:id/charts/reorder` - Reorder charts
 
 ### Chart Data API
-- `GET /api/chart-data` - Получить данные графиков
-- `POST /api/chart-data` - Создать данные графиков
-- `PUT /api/chart-data` - Обновить данные графиков
+- `GET /api/chart-data` - Get chart data
+- `POST /api/chart-data` - Create chart data
+- `PUT /api/chart-data` - Update chart data
 
 ### Data API
-- `GET /api/data/:endpoint` - Получить данные по endpoint
+- `GET /api/data/:endpoint` - Get data by endpoint
 
-## Структура данных
+## Data Structure
 
 ### Dashboard
 ```typescript
@@ -146,248 +146,248 @@ interface NumberChartData {
 }
 ```
 
-## Компоненты и их назначение
+## Components and Their Purpose
 
 ### UI Components (`src/components/ui/`)
-- **Button**: Переиспользуемая кнопка с различными вариантами
-- **Card**: Карточка для отображения контента
-- **Modal**: Модальное окно для форм и диалогов
-- **Input**: Поле ввода с валидацией
-- **Badge**: Бейдж для статусов и меток
-- **Avatar**: Компонент аватара пользователя
-- **Header**: Заголовок приложения
+- **Button**: Reusable button with various variants
+- **Card**: Card for displaying content
+- **Modal**: Modal window for forms and dialogs
+- **Input**: Input field with validation
+- **Badge**: Badge for statuses and labels
+- **Avatar**: User avatar component
+- **Header**: Application header
 
 ### Chart Components (`src/components/charts/`)
-- **BarChart**: Столбчатый график с настройками
-- **LineChart**: Линейный график с анимацией
-- **NumberChart**: Числовой индикатор с форматированием
-- **ChartWrapper**: Обертка для всех типов графиков
-- **ChartConfigModal**: Модальное окно настройки графиков
+- **BarChart**: Bar chart with settings
+- **LineChart**: Line chart with animation
+- **NumberChart**: Number indicator with formatting
+- **ChartWrapper**: Wrapper for all chart types
+- **ChartConfigModal**: Chart configuration modal
 
 ### Dashboard Components (`src/components/dashboard/`)
-- **DashboardCard**: Карточка дашборда в списке
-- **DashboardList**: Список всех дашбордов
-- **DashboardView**: Просмотр конкретного дашборда с графиками
+- **DashboardCard**: Dashboard card in list
+- **DashboardList**: List of all dashboards
+- **DashboardView**: View specific dashboard with charts
 
 ### Layout Components (`src/components/layout/`)
-- **MainLayout**: Основной макет приложения
+- **MainLayout**: Main application layout
 
-## Features (Функциональные модули)
+## Features (Functional Modules)
 
 ### Dashboard Feature (`src/features/dashboard/`)
-- **types.ts**: Типы данных для дашбордов
-- **hooks/use-dashboards.ts**: Хук для управления дашбордами
+- **types.ts**: Dashboard data types
+- **hooks/use-dashboards.ts**: Hook for dashboard management
 
 ### Charts Feature (`src/features/charts/`)
-- **hooks/use-chart-modal.ts**: Хук для управления модальным окном графиков
+- **hooks/use-chart-modal.ts**: Hook for chart modal management
 
-## Services (Сервисы)
+## Services
 
 ### API Services (`src/services/api/`)
-- **dashboard-service.ts**: Сервис для работы с API дашбордов
+- **dashboard-service.ts**: Service for dashboard API
 
-## Lib (Библиотеки и утилиты)
+## Lib (Libraries and Utilities)
 
 ### Data (`src/lib/data/`)
-- **mock-data.ts**: Моковые данные для разработки
+- **mock-data.ts**: Mock data for development
 
 ### Styles (`src/lib/styles/`)
-- **component-styles.ts**: Предопределенные стили компонентов
-- **design-system.ts**: Дизайн-система с цветами и типографикой
-- **index.ts**: Экспорт всех стилей
+- **component-styles.ts**: Predefined component styles
+- **design-system.ts**: Design system with colors and typography
+- **index.ts**: Style exports
 
 ### Types (`src/lib/types/`)
-- **api.ts**: Типы для API запросов и ответов
+- **api.ts**: Types for API requests and responses
 
 ### Utils (`src/lib/utils/`)
-- **api.ts**: Утилиты для работы с API
-- **id-generator.ts**: Генератор уникальных ID
-- **json-server.ts**: Утилиты для работы с JSON Server
+- **api.ts**: Utilities for API work
+- **id-generator.ts**: Unique ID generator
+- **json-server.ts**: JSON Server utilities
 
-## API Routes (Маршруты API)
+## API Routes
 
 ### Dashboard Routes (`src/app/api/dashboards/`)
-- **route.ts**: Основные операции с дашбордами
-- **[id]/route.ts**: Операции с конкретным дашбордом
-- **[id]/charts/reorder/route.ts**: Изменение порядка графиков
+- **route.ts**: Main dashboard operations
+- **[id]/route.ts**: Operations with specific dashboard
+- **[id]/charts/reorder/route.ts**: Chart reordering
 
 ### Chart Routes (`src/app/api/charts/`)
-- **route.ts**: Основные операции с графиками
-- **[id]/route.ts**: Операции с конкретным графиком
+- **route.ts**: Main chart operations
+- **[id]/route.ts**: Operations with specific chart
 
 ### Data Routes (`src/app/api/data/`)
-- **[endpoint]/route.ts**: Получение данных по endpoint
+- **[endpoint]/route.ts**: Get data by endpoint
 
 ### Chart Data Routes (`src/app/api/chart-data/`)
-- **route.ts**: Управление данными графиков
+- **route.ts**: Chart data management
 
 ### Documentation Routes (`src/app/api/docs/`)
-- **route.ts**: API документация
+- **route.ts**: API documentation
 
-## Страницы приложения
+## Application Pages
 
-### Главная страница (`src/app/page.tsx`)
-- Список всех дашбордов
-- Создание нового дашборда
-- Навигация по приложению
+### Main Page (`src/app/page.tsx`)
+- List of all dashboards
+- Create new dashboard
+- Application navigation
 
-### Страница дашборда (`src/app/dashboard/[id]/page.tsx`)
-- Просмотр конкретного дашборда
-- Управление графиками
-- Drag & Drop функциональность
+### Dashboard Page (`src/app/dashboard/[id]/page.tsx`)
+- View specific dashboard
+- Chart management
+- Drag & Drop functionality
 
-### API документация (`src/app/api-docs/page.tsx`)
-- Интерактивная документация API
-- Swagger UI интерфейс
+### API Documentation (`src/app/api-docs/page.tsx`)
+- Interactive API documentation
+- Swagger UI interface
 
-## Конфигурационные файлы
+## Configuration Files
 
 ### TailwindCSS (`tailwind.config.js`)
-- Кастомные цвета (primary, secondary, success, warning, danger)
-- Анимации и переходы
-- Типографика и отступы
+- Custom colors (primary, secondary, success, warning, danger)
+- Animations and transitions
+- Typography and spacing
 
 ### TypeScript (`tsconfig.json`)
-- Строгий режим TypeScript
-- Алиасы путей (@/, @/components/, @/lib/)
-- Настройки компиляции
+- Strict TypeScript mode
+- Path aliases (@/, @/components/, @/lib/)
+- Compilation settings
 
 ### Next.js (`next.config.js`)
-- Конфигурация для продакшена
-- Оптимизация изображений
-- Настройки сборки
+- Production configuration
+- Image optimization
+- Build settings
 
-## Функциональность
+## Functionality
 
-### Создание и управление дашбордами
-- Создание новых дашбордов
-- Редактирование существующих
-- Удаление дашбордов
-- Переименование дашбордов
+### Dashboard Creation and Management
+- Create new dashboards
+- Edit existing dashboards
+- Delete dashboards
+- Rename dashboards
 
-### Управление графиками
-- Добавление графиков в дашборд
-- Настройка параметров графиков
-- Изменение порядка графиков (Drag & Drop)
-- Редактирование существующих графиков
-- Удаление графиков
+### Chart Management
+- Add charts to dashboard
+- Configure chart parameters
+- Change chart order (Drag & Drop)
+- Edit existing charts
+- Delete charts
 
-### Типы графиков
-- **Number Chart**: Числовой индикатор с единицей измерения
-- **Bar Chart**: Столбчатый график с настройкой цветов
-- **Line Chart**: Линейный график с анимацией
+### Chart Types
+- **Number Chart**: Number indicator with unit of measurement
+- **Bar Chart**: Bar chart with color settings
+- **Line Chart**: Line chart with animation
 
 ### Drag & Drop
-- Перетаскивание графиков для изменения порядка
-- Визуальная обратная связь
-- Сохранение нового порядка
+- Drag charts to change order
+- Visual feedback
+- Save new order
 
-### Редактирование графиков
-- Редактирование заголовка и описания
-- Изменение данных графиков
-- Настройка цветов и конфигурации
-- Загрузка существующих данных при редактировании
+### Chart Editing
+- Edit title and description
+- Change chart data
+- Configure colors and settings
+- Load existing data when editing
 
-## Разработка и тестирование
+## Development and Testing
 
-### Команды разработки
+### Development Commands
 ```bash
-npm run dev          # Запуск Next.js сервера
-npm run json-server  # Запуск JSON Server
-npm run build        # Сборка для продакшена
-npm run start        # Запуск продакшен сервера
-npm run lint         # Проверка кода
-npm run type-check   # Проверка типов TypeScript
+npm run dev          # Start Next.js server
+npm run json-server  # Start JSON Server
+npm run build        # Build for production
+npm run start        # Start production server
+npm run lint         # Code linting
+npm run type-check   # TypeScript type checking
 ```
 
-### Тестовые файлы
-- `test-api.js` - Тестирование API endpoints
-- `test-chart-creation.js` - Тестирование создания графиков
-- `test-chart-editing.js` - Тестирование редактирования графиков
-- `test-dashboard-rename.js` - Тестирование переименования дашбордов
+### Test Files
+- `test-api.js` - API endpoint testing
+- `test-chart-creation.js` - Chart creation testing
+- `test-chart-editing.js` - Chart editing testing
+- `test-dashboard-rename.js` - Dashboard rename testing
 
 ### JSON Server
-- Запускается на порту 3001
-- Использует файл `db.json` для хранения данных
-- Поддерживает фильтрацию, сортировку и поиск
+- Runs on port 3001
+- Uses `db.json` file for data storage
+- Supports filtering, sorting, and search
 
-## Принципы архитектуры
+## Architecture Principles
 
 ### 1. Feature-based Architecture
-- Логика группируется по функциональным модулям
-- Каждый feature самодостаточен
-- Легко тестировать и поддерживать
+- Logic grouped by functional modules
+- Each feature is self-contained
+- Easy to test and maintain
 
 ### 2. Separation of Concerns
-- UI компоненты отделены от бизнес-логики
-- API логика в отдельных сервисах
-- Типы данных определены в features
+- UI components separated from business logic
+- API logic in separate services
+- Data types defined in features
 
 ### 3. Type Safety
-- Строгая типизация TypeScript
-- Интерфейсы для всех данных
-- Компиляция проверяет типы
+- Strict TypeScript typing
+- Interfaces for all data
+- Compilation checks types
 
 ### 4. Reusable Components
-- Компоненты переиспользуются
-- Без привязки к конкретной бизнес-логике
-- Принимают props, не содержат состояние
+- Components are reusable
+- No binding to specific business logic
+- Accept props, don't contain state
 
 ### 5. API-First Design
 - RESTful API endpoints
-- Консистентная обработка ошибок
-- JSON формат ответов
+- Consistent error handling
+- JSON response format
 
-## Производительность
+## Performance
 
-### Оптимизации
-- Code splitting для компонентов
-- Lazy loading для графиков
-- Оптимизация изображений Next.js
-- Кэширование API запросов
+### Optimizations
+- Code splitting for components
+- Lazy loading for charts
+- Next.js image optimization
+- API request caching
 
-### Мониторинг
-- Error boundaries для обработки ошибок
-- Loading states для пользовательского опыта
-- Валидация данных на клиенте и сервере
+### Monitoring
+- Error boundaries for error handling
+- Loading states for user experience
+- Data validation on client and server
 
-## Безопасность
+## Security
 
 ### API Security
-- Валидация всех входных данных
-- Санитизация данных
-- Правильная обработка CORS
-- Использование environment variables
+- Validate all input data
+- Sanitize data
+- Proper CORS handling
+- Use environment variables
 
 ### Frontend Security
-- Санитизация пользовательского ввода
-- Защита от XSS атак
-- Валидация данных на клиенте
+- Sanitize user input
+- XSS attack protection
+- Client-side data validation
 
-## Доступность (Accessibility)
+## Accessibility
 
 ### WCAG Guidelines
-- Семантическая HTML разметка
-- Правильные ARIA атрибуты
-- Навигация с клавиатуры
-- Alt текст для изображений
+- Semantic HTML markup
+- Proper ARIA attributes
+- Keyboard navigation
+- Alt text for images
 
 ### Chart Accessibility
-- Правильный цветовой контраст
-- Альтернативные таблицы данных
-- Поддержка screen readers
-- Навигация с клавиатуры
+- Proper color contrast
+- Alternative data tables
+- Screen reader support
+- Keyboard navigation
 
-## Мобильная адаптивность
+## Mobile Responsiveness
 
 ### Responsive Design
-- Mobile-first подход
-- Адаптивные графики
-- Touch-friendly взаимодействия
-- Оптимизированные макеты для маленьких экранов
+- Mobile-first approach
+- Adaptive charts
+- Touch-friendly interactions
+- Optimized layouts for small screens
 
 ### Performance
-- Оптимизация для мобильных сетей
-- Уменьшение размера бандла
+- Mobile network optimization
+- Bundle size reduction
 - Lazy loading
-- Правильные стратегии кэширования 
+- Proper caching strategies 

@@ -88,7 +88,7 @@ export const useDashboards = () => {
         config: config.config || {},
       });
       if (newChart) {
-        // После добавления графика делаем повторный запрос дашборда для актуализации списка charts
+        // Refresh dashboard data after adding chart to update charts list
         const updatedDashboard = await DashboardService.getDashboard(dashboardId);
         if (updatedDashboard) {
           setDashboards(prev => prev.map(d => d.id === dashboardId ? updatedDashboard : d));
@@ -205,7 +205,7 @@ export const useDashboards = () => {
     // Save to API
     try {
       await DashboardService.reorderCharts(dashboardId, chartIds);
-      // После reorder делаем повторный запрос дашборда для актуализации порядка
+      // Refresh dashboard data after reorder to update chart order
       const updatedDashboard = await DashboardService.getDashboard(dashboardId);
       if (updatedDashboard) {
         setDashboards(prev => prev.map(d => d.id === dashboardId ? updatedDashboard : d));
